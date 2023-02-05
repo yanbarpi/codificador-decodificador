@@ -22,6 +22,8 @@
                 <form class="mostrarTexto">
                     <p>Texto Codificado - Decodificado</p>
                     <textarea name ="mensaje-salida" id="mensaje-salida" cols="60" rows="25" placeholder="Texto Codificado - Decodificado"></textarea> 
+                    <img id= "fondo-encriptado" src="encriptado-fondo.png" class="fondo">
+                    <img id= "fondo-desencriptado" src="desencriptado-fondo.png" class="fondo">
                     <button id="copiar-texto" class="boton">Copiar</button>
                 </form>                               
             </ul>
@@ -34,7 +36,9 @@
     <script>
         function encriptar() {
             var textoEncriptar = document.getElementById("mensaje-entrada").value;
-            
+            var imagen2 = document.getElementById("fondo-desencriptado");
+            var imagen1 = document.getElementById("fondo-encriptado");
+
             if(textoEncriptar == textoEncriptar.match(/^[a-z ]*$/)) {
                 textoEncriptar = textoEncriptar
                                          .replaceAll("e", "enter")
@@ -43,16 +47,19 @@
                                          .replaceAll("o", "ober")
                                          .replaceAll("u", "ufat"); 
                 document.getElementById("mensaje-salida").value = textoEncriptar;                         
-                
+                imagen1.style.display="block";            
+                imagen2.style.display="none"
             }
            else {            
             document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales";        
-            
+            imagen1.style.display="none";            
+            imagen2.style.display="none"
             }
         }       
         function desEncriptar() {
             var textoDesencriptar = document.getElementById("mensaje-entrada").value;
-            
+            var imagen1 = document.getElementById("fondo-encriptado");
+            var imagen2 = document.getElementById("fondo-desencriptado");
             if(textoDesencriptar == textoDesencriptar.match(/^[a-z ]*$/)){
                 textoDesencriptar = textoDesencriptar
                                          .replaceAll( "enter", "e")
@@ -61,11 +68,13 @@
                                          .replaceAll( "ober", "o")
                                          .replaceAll( "ufat", "u"); 
                 document.getElementById("mensaje-salida").value = textoDesencriptar;             
-                
+                imagen1.style.display="none";                       
+                imagen2.style.display="block"; 
             }
             else{
                 document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales";
-                
+                imagen1.style.display="none";                         
+                imagen2.style.display="none";
             }          
         }
         function copiar() {
