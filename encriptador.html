@@ -4,37 +4,41 @@
     
     <head>
         <meta charset="UTF-8">
-        <title> Encriptador-Desencriptador</title>        
+        <title>Codificador - Decodificador</title>        
         <link rel="stylesheet" href="encriptador.css">
-        <h1>Encriptador-Desencriptador</h1>
+        <h1>Codificador - Decodificador</h1>
        
     </head>
     <body>        
          <main>
             <ul class="menu">
                 <form class="encriptar-desencriptar" >
-                    <p>Texto a Encriptar-Desencriptar</p>
-                    <textarea class="textEncriptar" autofocus name="mensaje-entrada" id="mensaje-entrada" cols="70" rows="25" placeholder="Ingrese el texto aquí en minúsculas y sin caracteres especiales" ></textarea> 
-                    <input type="button" value="Encriptar" id="botonEnc" class="boton">
-                    <input type="button" value="Desencriptar" id="botonDes" class="boton"> 
+                    <p>Texto a Codificar - Decodificar</p>
+                    <textarea  name="mensaje-entrada" id="mensaje-entrada" cols="70" rows="25" autofocus placeholder="Ingrese el texto aquí en minúsculas, sin tildes y sin caracteres especiales" ></textarea> 
+                    <input type="button" value="Encriptar" id="botonEnc" class="boton">                    
+                    <input type="button" value="Desencriptar" id="botonDes" class="boton">                     
                     <button id="limpiar" class="boton">Limpiar</button>                          
                 </form>                
                 <form class="mostrarTexto">
-                    <p>Texto Encriptado-Desencriptado</p>
-                    <textarea name ="mensaje-salida" id="mensaje-salida" cols="60" rows="25" placeholder="Texto Encriptado-Desencriptado"></textarea> 
-                    <button id="copiar-texto" class="boton">Copiar</button> 
-                </form>
+                    <p>Texto Codificado - Decodificado</p>
+                    <textarea name ="mensaje-salida" id="mensaje-salida" cols="60" rows="25" placeholder="Texto Codificado - Decodificado"></textarea> 
+                    <img id= "fondo-encriptado" src="encriptado-fondo.png" class="fondo">
+                    <img id= "fondo-desencriptado" src="desencriptado-fondo.png" class="fondo">
+                    <button id="copiar-texto" class="boton">Copiar</button>
+                </form>                               
             </ul>
-         </main>         
-    </body>
-
-    <footer>
-        <p>Desarrollado por: Yannis Bargas Piña</p>        
-    </footer>
-    
+         </main>  
+         <footer>
+            <p>Desarrollado por: Yannis Bargas Piña</p>
+            <p>Estudiante de Alura Latam</p>       
+        </footer>       
+    </body>   
     <script>
         function encriptar() {
             var textoEncriptar = document.getElementById("mensaje-entrada").value;
+            var imagen2 = document.getElementById("fondo-desencriptado");
+            var imagen1 = document.getElementById("fondo-encriptado");
+
             if(textoEncriptar == textoEncriptar.match(/^[a-z ]*$/)) {
                 textoEncriptar = textoEncriptar
                                          .replaceAll("e", "enter")
@@ -42,18 +46,20 @@
                                          .replaceAll("a", "ai")
                                          .replaceAll("o", "ober")
                                          .replaceAll("u", "ufat"); 
-            document.getElementById("mensaje-salida").value = textoEncriptar; 
+                document.getElementById("mensaje-salida").value = textoEncriptar;                         
+                imagen1.style.display="block";            
+                imagen2.style.display="none"
             }
-
            else {            
-            document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales";
-           }
-           
-                           
-        }
-       
+            document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales";        
+            imagen1.style.display="none";            
+            imagen2.style.display="none"
+            }
+        }       
         function desEncriptar() {
             var textoDesencriptar = document.getElementById("mensaje-entrada").value;
+            var imagen1 = document.getElementById("fondo-encriptado");
+            var imagen2 = document.getElementById("fondo-desencriptado");
             if(textoDesencriptar == textoDesencriptar.match(/^[a-z ]*$/)){
                 textoDesencriptar = textoDesencriptar
                                          .replaceAll( "enter", "e")
@@ -61,22 +67,23 @@
                                          .replaceAll( "ai", "a")
                                          .replaceAll( "ober", "o")
                                          .replaceAll( "ufat", "u"); 
-            document.getElementById("mensaje-salida").value = textoDesencriptar; 
+                document.getElementById("mensaje-salida").value = textoDesencriptar;             
+                imagen1.style.display="none";                       
+                imagen2.style.display="block"; 
             }
             else{
-                document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales"
+                document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales";
+                imagen1.style.display="none";                         
+                imagen2.style.display="none";
             }          
         }
-
         function copiar() {
                  navigator.clipboard.writeText(document.getElementById("mensaje-salida").value);
         }
         document.querySelector("#copiar-texto").addEventListener("click", copiar);
-     
+
         botonEnc.onclick = encriptar;
         botonDes.onclick = desEncriptar;
 
-    </script>
-    
-    
+    </script>    
 </html>
