@@ -11,6 +11,66 @@ h1{
     display: inline-block;    
     vertical-align: top;    
     padding: 0px 30px; 
+    h1{
+        text-align: center;
+    }
+    .menu{
+        width: 95%;    
+    }
+    .menu form{    
+        display: inline-block;    
+        vertical-align: top;    
+        padding: 0px 30px; 
+    }
+    .encriptar-desencriptar{
+        margin: 0px 20px;    
+        width: 40%;      
+    }
+    .encriptar-desencriptar textarea{
+        background-color: ghostwhite;
+        border-radius: 5px;   
+    }
+    .encriptar-desencriptar textarea:hover{
+        border-color: aqua;
+    }
+    .fondo{
+        display: none;    
+        width: 100px;
+        height: 80px;
+        margin: 0px 100px;
+        transform: translate(250%, -470%);
+        border-radius: 10px;
+    }
+    form p{
+        font-size: 20px;
+    }
+    .mostrarTexto{    
+       
+        width: 30%;       
+    }
+    .mostrarTexto textarea{
+        background: ghostwhite;
+        border-radius: 5px;
+    }
+    .mostrarTexto textarea:hover{
+        border-color: aqua;
+    }
+    .boton{    
+        border-color: black;
+        border-style: solid;
+        border-radius: 5px;    
+    }
+    .boton:hover{
+        background-color: rgb(88, 88, 253);
+        font-size: 15px;
+        font-weight: bold;
+        cursor:pointer;
+    }
+    footer{
+        text-align: center; 
+        margin: 10px ;   
+    }
+    
 }
 .encriptar-desencriptar{
     margin: 0px 20px;
