@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <title> Encriptador-Desencriptador</title>        
+        <link rel="stylesheet" href="encriptador.css">
+        <h1>Encriptador-Desencriptador</h1>
+       
+    </head>
+    <body>        
+         <main>
+            <ul class="menu">
+                <form class="encriptar-desencriptar" >
+                    <p>Texto a Encriptar-Desencriptar</p>
+                    <textarea class="textEncriptar" autofocus name="mensaje-entrada" id="mensaje-entrada" cols="70" rows="25" placeholder="Ingrese el texto aquí en minúsculas y sin caracteres especiales" ></textarea> 
+                    <input type="button" value="Encriptar" id="botonEnc" class="boton">
+                    <input type="button" value="Desencriptar" id="botonDes" class="boton"> 
+                    <button id="limpiar" class="boton">Limpiar</button>                          
+                </form>                
+                <form class="mostrarTexto">
+                    <p>Texto Encriptado-Desencriptado</p>
+                    <textarea name ="mensaje-salida" id="mensaje-salida" cols="60" rows="25" placeholder="Texto Encriptado-Desencriptado"></textarea> 
+                    <button id="copiar-texto" class="boton">Copiar</button> 
+                </form>
+            </ul>
+         </main>         
+    </body>
+
+    <footer>
+        <p>Desarrollado por: Yannis Bargas Piña</p>        
+    </footer>
+    
+    <script>
+        function encriptar() {
+            var textoEncriptar = document.getElementById("mensaje-entrada").value;
+            if(textoEncriptar == textoEncriptar.match(/^[a-z ]*$/)) {
+                textoEncriptar = textoEncriptar
+                                         .replaceAll("e", "enter")
+                                         .replaceAll("i", "imes")
+                                         .replaceAll("a", "ai")
+                                         .replaceAll("o", "ober")
+                                         .replaceAll("u", "ufat"); 
+            document.getElementById("mensaje-salida").value = textoEncriptar; 
+            }
+
+           else {            
+            document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales";
+           }
+           
+                           
+        }
+       
+        function desEncriptar() {
+            var textoDesencriptar = document.getElementById("mensaje-entrada").value;
+            if(textoDesencriptar == textoDesencriptar.match(/^[a-z ]*$/)){
+                textoDesencriptar = textoDesencriptar
+                                         .replaceAll( "enter", "e")
+                                         .replaceAll( "imes", "i")
+                                         .replaceAll( "ai", "a")
+                                         .replaceAll( "ober", "o")
+                                         .replaceAll( "ufat", "u"); 
+            document.getElementById("mensaje-salida").value = textoDesencriptar; 
+            }
+            else{
+                document.getElementById("mensaje-salida").value = "Escribir solo en minúsculas y sin caracteres especiales"
+            }          
+        }
+
+        function copiar() {
+                 navigator.clipboard.writeText(document.getElementById("mensaje-salida").value);
+        }
+        document.querySelector("#copiar-texto").addEventListener("click", copiar);
+     
+        botonEnc.onclick = encriptar;
+        botonDes.onclick = desEncriptar;
+
+    </script>
+    
+    
+</html>

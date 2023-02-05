@@ -1,0 +1,47 @@
+
+h1{
+    text-align: center;
+}
+.menu{
+    width: 95%;
+    
+}
+
+.menu form{    
+    display: inline-block;    
+    vertical-align: top;    
+    padding: 0px 30px; 
+}
+.encriptar-desencriptar{
+    margin: 0px 20px;
+    padding: auto;
+    width: 40%;    
+}
+.encriptar-desencriptar textarea{
+    background-color: ghostwhite;
+}
+form p{
+    font-size: 20px;
+}
+.mostrarTexto{
+    margin: 0px 20px;
+    padding: auto;
+    width: 30%;
+}
+.mostrarTexto textarea{
+    background: ghostwhite;
+}
+.boton{    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+}
+.boton:hover{
+    background-color: rgb(88, 88, 253);
+    font-size: 15px;
+    font-weight: bold;
+}
+footer{
+    text-align: center; 
+    margin: 30px ;   
+}
